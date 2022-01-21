@@ -23,5 +23,5 @@ jobs:
           file: ./src/Dockerfile
           push: true
           tags:
-            danielucb/rotten-potatoes:latest
+            danielucb/rotten-potatoes:latest,
             danielucb/rotten-potatoes:${{ github.run_number }}
