@@ -33,6 +33,7 @@ spec:
     app: mongodb
   ports:
   - port: 27017
+    targetPort: 27017
   type: ClusterIP
 ---
 
@@ -40,19 +41,19 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web
+  name: movies
 spec:
   selector:
     matchLabels:
-      app: web
+      app: movies
   template:
     metadata:
       labels:
-        app: web
+        app: movies
     spec:
       containers:
-      - name: web
-        image: danielucb/rotten-potatoes:v2
+      - name: movies
+        image: danielucb/rotten-potatoes:v1
         ports:
         - containerPort: 5000
         env:
@@ -78,5 +79,5 @@ spec:
   ports:
   - port: 80
     targetPort: 5000
-    #nodePort: 30000
+    nodePort: 30000
   type: LoadBalancer
